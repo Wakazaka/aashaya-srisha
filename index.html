@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b3332">
+<title>Aashaya &amp; Srisha · Wedding</title>
+<meta name="description" content="Aashaya B.C and Srisha Poudel invite you to celebrate their wedding on Mangsir 11, 2083.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<style>
+/* VOICE: tender, festive, unhurried: a lotus pond at dusk.
+   IDEA: the invitation is a pond; a wooden boat carries the couple and writes the news in its wake.
+   PICTURE: full-screen top-down lotus pond on canvas; the boat parts the lily pads and the text sparkles in.
+   COLOUR and TYPE: deep pond teal, lotus pink, marigold and soft gold; Awesome Serif for names and titles, Agrave Pro for words, Tiro Devanagari.
+   LAYOUT: one hero screen, then calm centred sections in one column, events as a lit timeline. */
+@font-face{font-family:"Awesome Serif";src:url(fonts/AwesomeSerif.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Agrave Pro";src:url(fonts/AgravePro.woff2) format("woff2");font-weight:100 700;font-display:swap}
+:root{color-scheme:dark;--serif:"Awesome Serif",Georgia,serif;--hand:"Agrave Pro","Segoe Print",sans-serif;--bg:#0b3332;--bg2:#0e3d3b;--deep:#072423;--ink:#f4ede1;--soft:#c9d8d2;--gold:#e0c07a;--gold2:#b8914a;--pink:#f1b6c4;--line:rgba(224,192,122,.28)}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth}
+html.lock,html.lock body{overflow:hidden;height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--hand);overflow-x:clip;-webkit-font-smoothing:antialiased;font-synthesis:none}
+a{color:inherit}
+.dev{font-family:"Tiro Devanagari Hindi","Noto Serif Devanagari",serif}
+.script{font-family:var(--hand);font-weight:300}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;height:100vh;height:100svh;min-height:520px;overflow:hidden;background:var(--bg)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-text{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(88vw,460px);text-align:center;pointer-events:none;text-shadow:0 2px 14px rgba(0,20,18,.75),0 0 2px rgba(0,20,18,.6)}
+.rv{opacity:0;clip-path:inset(-30% 100% -30% -10%);filter:blur(6px);transition:opacity 1.2s ease,clip-path 1.4s cubic-bezier(.4,0,.2,1),filter 1.6s ease}
+.rv.on{opacity:1;clip-path:inset(-30% -10% -30% -10%);filter:blur(0)}
+.h-dev{font-size:clamp(17px,4.4vw,22px);color:var(--gold);margin:0 0 2px}
+.h-save{font-size:clamp(38px,11.5vw,62px);line-height:1.05;margin:0 0 8px}
+.h-names{font:400 clamp(32px,9.6vw,56px)/1.02 var(--serif);margin:0 0 10px;white-space:nowrap}
+.h-names span{color:var(--pink);padding:0 .06em}
+.h-date{font:400 clamp(24px,7vw,32px)/1.2 var(--serif);margin:0}
+.h-ad{font-size:clamp(17px,4.6vw,20px);color:var(--soft);margin:2px 0 8px}
+/* groups */
+.grp{display:grid;gap:clamp(6px,1.4vh,12px)}
+.grp p,.grp h1{margin:0!important}
+.sep{display:block;width:110px;height:12px;margin:clamp(20px,4vh,36px) auto;color:var(--gold)}
+.h-venue{font:400 clamp(18px,5vw,22px)/1.25 var(--serif);color:var(--gold);margin:0}
+
+.gate{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(circle at 50% 50%,rgba(7,36,35,.15),rgba(7,36,35,.65));transition:opacity .9s ease,visibility .9s;z-index:3}
+.gate.off{opacity:0;visibility:hidden}
+.seal{appearance:none;border:0;background:none;color:var(--ink);cursor:pointer;display:grid;justify-items:center;gap:14px;font:inherit;padding:20px;-webkit-tap-highlight-color:transparent}
+.seal .ring{width:min(46vw,190px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#fbe7ad,#d9b062 45%,#9c7430 100%);box-shadow:0 0 0 6px rgba(224,192,122,.18),0 0 0 14px rgba(224,192,122,.08),0 18px 40px rgba(0,0,0,.45);animation:pulse 2.4s ease-in-out infinite;position:relative}
+.seal .ring::after{content:"";position:absolute;inset:9px;border-radius:50%;border:1.5px dashed rgba(90,60,20,.5)}
+.seal .mono{font-family:var(--serif);font-size:min(15vw,62px);color:#5b3c13;line-height:1;text-shadow:0 1px 0 rgba(255,240,200,.6)}
+.seal .tap{font:400 24px/1.2 var(--serif);color:var(--ink)}
+.seal .tap small{display:block;font:300 17px var(--hand);letter-spacing:0;color:var(--soft);margin-top:4px}
+@keyframes pulse{50%{transform:scale(1.045)}}
+.seal:focus-visible .ring{outline:2px solid var(--pink);outline-offset:8px}
+
+.skip,.cue{position:absolute;z-index:2;opacity:0;visibility:hidden;transition:opacity .6s,visibility .6s}
+.skip.show,.cue.show{opacity:1;visibility:visible}
+.skip{top:max(14px,env(safe-area-inset-top));right:14px;background:rgba(7,36,35,.55);border:1px solid var(--line);color:var(--soft);font:16px var(--hand);padding:8px 16px;border-radius:30px;cursor:pointer;min-height:40px}
+.cue{left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);text-align:center;color:var(--soft);font-size:17px;text-decoration:none;padding:8px 14px}
+.cue svg{display:block;margin:4px auto 0;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+
+/* ---------- MUSIC ---------- */
+.music{position:fixed;right:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:20;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:rgba(7,36,35,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:var(--gold);display:none;place-items:center;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.music.show{display:grid}
+.bars{display:flex;gap:3px;align-items:flex-end;height:18px}
+.bars i{width:3px;background:currentColor;border-radius:2px;height:5px}
+.music.playing .bars i{animation:eq 1s ease-in-out infinite}
+.music.playing .bars i:nth-child(2){animation-delay:.2s}.music.playing .bars i:nth-child(3){animation-delay:.4s}.music.playing .bars i:nth-child(4){animation-delay:.1s}
+@keyframes eq{0%,100%{height:4px}50%{height:18px}}
+.music:not(.playing) .bars{opacity:.55}
+
+/* ---------- SECTIONS ---------- */
+.band{padding:clamp(64px,10vw,110px) max(6vw,20px);text-align:center;position:relative}
+.band.alt{background:linear-gradient(180deg,var(--bg2),var(--bg))}
+.band.deep{background:var(--deep)}
+.wrap{max-width:720px;margin:0 auto}
+.eyebrow{font:400 clamp(20px,5.4vw,24px)/1.2 var(--hand);color:var(--pink);margin:0 0 8px}
+h2{font:400 clamp(34px,9vw,52px)/1.05 var(--serif);margin:0 0 18px;text-wrap:balance}
+p.lead{font-size:clamp(18px,4.4vw,21px);color:var(--soft);max-width:34em;margin:0 auto}
+.lotus-div{width:120px;height:34px;margin:0 auto 22px;display:block;color:var(--gold)}
+.fade{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s ease}
+.fade.in{opacity:1;transform:none}
+
+/* couple */
+.couple{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;justify-items:center;column-gap:clamp(6px,3vw,30px);row-gap:12px;margin-top:36px}
+.person{display:grid;justify-items:center;gap:4px;align-self:start;text-align:center}
+.medal{width:clamp(100px,30vw,170px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 50% 40%,#16514e,#0a2e2d 70%);border:1px solid var(--line);box-shadow:inset 0 0 30px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.25)}
+.medal::before{content:"";position:absolute;inset:8px;border-radius:50%;border:1px solid rgba(241,182,196,.25)}
+.medal span{font-family:var(--serif);font-size:clamp(62px,16vw,84px);color:var(--gold);line-height:1;transform:translateY(2px)}
+.person h3{font:400 clamp(24px,7vw,36px)/1.1 var(--serif);margin:0;text-wrap:balance}
+.person p{margin:0;color:var(--soft)}
+.amp{font-family:var(--serif);font-size:clamp(48px,13vw,70px);color:var(--pink);line-height:1}
+
+/* scratch */
+.scratch{position:relative;width:min(78vw,260px);aspect-ratio:1;margin:30px auto 10px}
+.scratch .under{position:absolute;inset:0;border-radius:50%;display:grid;place-content:center;gap:2px;background:radial-gradient(circle at 50% 35%,#fdf6e8,#efe1c4);color:#3e2a12;box-shadow:0 14px 40px rgba(0,0,0,.4),0 0 0 6px rgba(224,192,122,.25)}
+.under .d1{font:400 22px var(--serif);color:#8a5a2b}
+.under .d2{font:400 clamp(76px,22vw,96px)/.9 var(--serif);color:#7c1d2b}
+.under .d3{font:400 22px var(--serif)}
+.under .d4{font-size:19px;color:#8a5a2b;margin-top:4px}
+.scratch canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;touch-action:none;cursor:grab;transition:opacity .9s ease}
+.scratch canvas.gone{opacity:0;pointer-events:none}
+.hint{color:var(--soft);font-size:17px;margin:8px 0 0}
+
+/* countdown */
+.count{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,2.4vw,18px);max-width:520px;margin:28px auto 0}
+.cell{border:1px solid var(--line);border-radius:16px;padding:16px 4px 12px;background:rgba(7,36,35,.45)}
+.cell b{display:block;font:400 clamp(36px,10.5vw,54px)/1 var(--serif);color:var(--gold);font-variant-numeric:tabular-nums}
+.cell small{display:block;margin-top:6px;font-size:15px;color:var(--soft)}
+.count-msg{font-size:21px;color:var(--soft);margin-top:24px}
+
+/* route picture */
+.route{max-width:560px;margin:26px auto 6px}
+.route svg{width:100%;height:auto;display:block}
+.route text{font-family:var(--hand);font-weight:400;fill:var(--ink)}
+
+/* timeline */
+.events{list-style:none;margin:30px auto 0;padding:0;max-width:600px;text-align:left;position:relative}
+.events::before{content:"";position:absolute;left:22px;top:10px;bottom:10px;width:1px;background:linear-gradient(var(--gold),rgba(224,192,122,.1))}
+.ev{position:relative;padding:0 0 38px 64px}
+.ev:last-child{padding-bottom:0}
+.ev .dot{position:absolute;left:0;top:0;width:45px;height:45px;border-radius:50%;background:var(--deep);border:1px solid var(--gold);display:grid;place-items:center;color:var(--pink)}
+.ev .when{font:400 17px/1.35 var(--hand);color:var(--gold);margin:0}
+.ev .when b{font-weight:500;white-space:nowrap}
+.ev h3{font:400 clamp(32px,8.6vw,40px)/1.05 var(--serif);margin:4px 0 6px}
+.ev p{margin:0 0 4px;color:var(--soft)}
+.ev .place{color:var(--ink)}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:30px;border:1px solid var(--gold);color:var(--gold);text-decoration:none;font:400 16px var(--hand);transition:background .3s,color .3s}
+.btn:hover,.btn:focus-visible{background:var(--gold);color:var(--deep);outline:none}
+.btn.ghost{border-color:var(--line);color:var(--soft)}
+.note{font-size:16px;color:var(--soft);margin-top:30px}
+
+/* closing */
+.closing .names{font:400 clamp(44px,12vw,60px)/1.05 var(--serif);margin:18px 0 6px}
+.closing .names span{color:var(--pink);padding:0 .06em}
+.closing .dt{color:var(--gold);font-size:20px}
+.foot{padding:26px 20px calc(80px + env(safe-area-inset-bottom));text-align:center;color:rgba(201,216,210,.6);font-size:15px;background:var(--deep);border-top:1px solid rgba(224,192,122,.12)}
+
+
+/* indian wedding ornaments */
+.toran{position:absolute;left:0;right:0;top:0;height:96px;pointer-events:none}
+.toran svg{display:block;width:100%;height:100%}
+#welcome{padding-top:clamp(120px,22vw,150px)}
+#couple{overflow:hidden}
+#couple .wrap{position:relative}
+.mandala{position:absolute;left:50%;top:58%;width:min(150vw,720px);aspect-ratio:1;transform:translate(-50%,-50%);color:var(--gold);opacity:.13;pointer-events:none;z-index:0}
+.mandala svg{width:100%;height:100%;animation:spin 180s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#couple .wrap>*:not(.mandala){position:relative;z-index:1}
+.paisley{height:46px;margin:0 0 34px;color:var(--gold)}
+.paisley svg{display:block;width:100%;height:100%}
+@media (prefers-reduced-motion:reduce){.mandala svg{animation:none}}
+#welcome h2{font-size:clamp(27px,7vw,40px)}
+@media (prefers-reduced-motion:reduce){.fade{opacity:1;transform:none;transition:none}.seal .ring,.cue svg{animation:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mg" viewBox="-10 -10 20 20">
+    <circle r="9" fill="#ea580c"/><circle r="9" fill="none" stroke="#f59e0b" stroke-width="3" stroke-dasharray="2.2 1.6"/>
+    <circle r="5.6" fill="#f59e0b"/><circle r="5.6" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="1.6 1.2"/><circle r="2" fill="#c2410c"/>
+  </symbol>
+  <symbol id="leaf" viewBox="-6 0 12 26"><path d="M0 0C6 6 6 18 0 26C-6 18-6 6 0 0z" fill="#3f7d2c"/><path d="M0 2V24" stroke="#77a84a" stroke-width=".8"/></symbol>
+  <symbol id="lotus" viewBox="0 0 120 34">
+    <path d="M0 26h38M82 26h38" stroke="currentColor" stroke-width="1"/>
+    <g fill="none" stroke="currentColor" stroke-width="1.3">
+      <path d="M60 4c6 7 7 15 0 24c-7-9-6-17 0-24z"/>
+      <path d="M60 28c-3-9-11-15-20-15c1 9 9 15 20 15z"/>
+      <path d="M60 28c3-9 11-15 20-15c-1 9-9 15-20 15z"/>
+      <path d="M60 29c-8-3-16-2-22 2c7 3 15 2 22-2zM60 29c8-3 16-2 22 2c-7 3-15 2-22-2z"/>
+    </g>
+  </symbol>
+</svg>
+
+<header class="hero" id="top">
+  <canvas id="pond" aria-hidden="true"></canvas>
+  <div class="hero-text" id="heroText">
+    <div class="grp">
+      <p class="rv h-dev dev">॥ शुभ विवाह ॥</p>
+      <p class="rv h-save script">Save the Date</p>
+    </div>
+    <svg class="rv sep" viewBox="0 0 120 12" aria-hidden="true"><path d="M4 6H50M70 6H116" stroke="currentColor" stroke-width="1"/><path d="M60 1L65 6L60 11L55 6Z" fill="currentColor"/></svg>
+    <div class="grp">
+      <h1 class="rv h-names">Aashaya <span>&amp;</span> Srisha</h1>
+    </div>
+    <svg class="rv sep" viewBox="0 0 120 12" aria-hidden="true"><path d="M4 6H50M70 6H116" stroke="currentColor" stroke-width="1"/><path d="M60 1L65 6L60 11L55 6Z" fill="currentColor"/></svg>
+    <div class="grp">
+      <p class="rv h-date">Mangsir 11, 2083</p>
+      <p class="rv h-ad">Friday, 27 November 2026</p>
+    </div>
+  </div>
+  <div class="gate" id="gate">
+    <button class="seal" id="openBtn" aria-label="Tap to open the invitation">
+      <span class="ring"><span class="mono">A&amp;S</span></span>
+      <span class="tap">Tap to open<small>a wedding invitation awaits</small></span>
+    </button>
+  </div>
+  <button class="skip" id="skipBtn">Skip ›</button>
+  <a class="cue" id="cue" href="#welcome">Scroll down
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg>
+  </a>
+</header>
+
+<button class="music" id="musicBtn" aria-label="Pause music"><span class="bars"><i></i><i></i><i></i><i></i></span></button>
+<audio id="bgm" src="music.mp3" loop preload="auto"></audio>
+
+<main>
+  <section class="band" id="welcome">
+    <div class="toran" aria-hidden="true">
+      <svg preserveAspectRatio="none">
+        <defs>
+          <pattern id="torP" width="92" height="96" patternUnits="userSpaceOnUse">
+            <path d="M0 5 Q46 40 92 5" fill="none" stroke="#b8914a" stroke-width="1.2"/>
+            <use href="#leaf" x="34" y="18" width="12" height="26" transform="rotate(10 40 18)"/>
+            <use href="#leaf" x="48" y="18" width="12" height="26" transform="rotate(-10 54 18)"/>
+            <use href="#mg" x="-9" y="-4" width="18" height="18"/><use href="#mg" x="83" y="-4" width="18" height="18"/>
+            <use href="#mg" x="9" y="7" width="15" height="15"/><use href="#mg" x="24" y="14" width="15" height="15"/>
+            <use href="#mg" x="38" y="16" width="16" height="16"/>
+            <use href="#mg" x="53" y="14" width="15" height="15"/><use href="#mg" x="68" y="7" width="15" height="15"/>
+            <path d="M0 12 V62 M92 12 V62" stroke="#b8914a" stroke-width="1"/>
+            <use href="#mg" x="-6" y="22" width="12" height="12"/><use href="#mg" x="86" y="22" width="12" height="12"/>
+            <use href="#mg" x="-6" y="36" width="12" height="12"/><use href="#mg" x="86" y="36" width="12" height="12"/>
+            <use href="#mg" x="-6" y="50" width="12" height="12"/><use href="#mg" x="86" y="50" width="12" height="12"/>
+            <path d="M-5 66 Q0 60 5 66 L4 76 H-4 Z M87 66 Q92 60 97 66 L96 76 H88 Z" fill="#e0c07a"/>
+            <circle cx="0" cy="79" r="2" fill="#e0c07a"/><circle cx="92" cy="79" r="2" fill="#e0c07a"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#torP)"/>
+      </svg>
+    </div>
+    <div class="wrap fade">
+      <svg class="lotus-div"><use href="#lotus"/></svg>
+      <p class="eyebrow">You are invited</p>
+      <h2>Two hearts, two families, one beautiful beginning</h2>
+      <p class="lead">With the blessings of our elders, Aashaya B.C and Srisha Poudel warmly invite you to celebrate their marriage. Come share in the music, the rituals and the joy of two families becoming one. Your presence will make the day complete.</p>
+    </div>
+  </section>
+
+  <section class="band alt" id="couple">
+    <div class="wrap fade">
+      <div class="mandala" aria-hidden="true"><svg id="mandala" viewBox="-200 -200 400 400"></svg></div>
+      <p class="eyebrow">The couple</p>
+      <h2>Meet the bride and groom</h2>
+      <div class="couple">
+        <div class="medal"><span>A</span></div>
+        <div class="amp" aria-hidden="true">&amp;</div>
+        <div class="medal"><span>S</span></div>
+        <div class="person"><h3>Aashaya B.C</h3><p>The groom</p></div>
+        <div></div>
+        <div class="person"><h3>Srisha Poudel</h3><p>The bride</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="date">
+    <div class="wrap fade">
+      <p class="eyebrow">A sacred date awaits</p>
+      <h2>Scratch the golden seal</h2>
+      <div class="scratch" id="scratch">
+        <div class="under">
+          <span class="d1">Friday</span>
+          <span class="d2">27</span>
+          <span class="d3">November 2026</span>
+          <span class="d4 dev">मंसिर ११, २०८३</span>
+        </div>
+        <canvas id="scratchCv" aria-label="Scratch with your finger to reveal the wedding date"></canvas>
+      </div>
+      <p class="hint" id="scratchHint">Use your finger to rub the seal away</p>
+    </div>
+  </section>
+
+  <section class="band deep" id="countdown">
+    <div class="wrap fade">
+      <p class="eyebrow">Counting down</p>
+      <h2>Until the janti sets out</h2>
+      <div class="count" id="count">
+        <div class="cell"><b id="cd-d">0</b><small>Days</small></div>
+        <div class="cell"><b id="cd-h">00</b><small>Hours</small></div>
+        <div class="cell"><b id="cd-m">00</b><small>Minutes</small></div>
+        <div class="cell"><b id="cd-s">00</b><small>Seconds</small></div>
+      </div>
+      <p class="count-msg" id="countMsg" hidden></p>
+    </div>
+  </section>
+
+  <section class="band" id="events">
+    <div class="wrap fade">
+      <p class="eyebrow">The celebrations</p>
+      <h2>Join us on these days</h2>
+
+      <div class="route" aria-label="Janti route from Chandragiri to Dhapakhel">
+        <svg viewBox="0 20 560 170" role="img">
+          <defs>
+            <linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#e0c07a"/><stop offset="1" stop-color="#f1b6c4"/></linearGradient>
+          </defs>
+          <path id="rpath" d="M70 120 C 170 30, 250 170, 330 95 S 450 50, 490 112" fill="none" stroke="url(#rg)" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round"/>
+          <!-- home -->
+          <g transform="translate(70 120)">
+            <circle r="30" fill="#072423" stroke="#e0c07a"/>
+            <path d="M-13 3 L0 -10 L13 3 M-9 0 V12 H9 V0" fill="none" stroke="#f4ede1" stroke-width="2" stroke-linejoin="round"/>
+          </g>
+          <!-- venue -->
+          <g transform="translate(490 112)">
+            <circle r="30" fill="#072423" stroke="#e0c07a"/>
+            <path d="M-14 12 H14 M-11 12 V-1 M11 12 V-1 M-4 12 V-1 M4 12 V-1 M-15 -1 H15 L0 -13 Z" fill="none" stroke="#f4ede1" stroke-width="2" stroke-linejoin="round"/>
+          </g>
+          <g id="mover">
+            <ellipse rx="9" ry="5" fill="#e8902c"/><circle r="2.6" fill="#7c1d2b" cx="2"/>
+            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto"><mpath href="#rpath"/></animateMotion>
+          </g>
+          <text x="70" y="178" text-anchor="middle" font-size="24">Chandragiri</text>
+          <text x="490" y="178" text-anchor="middle" font-size="24">Dhapakhel</text>
+        </svg>
+      </div>
+
+      <ol class="events">
+        <li class="ev">
+          <span class="dot"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l5 5L20 6"/></svg></span>
+          <p class="when"><b>Mangsir 11, 2083</b> · Friday, 27 Nov · <b>8:00 AM</b></p>
+          <h3>Janti Prasthan</h3>
+          <p>The groom's procession sets out with music and blessings.</p>
+          <p class="place">From Aashaya's home, Chandragiri Municipality, to Quick 20 Party Palace, Dhapakhel</p>
+        </li>
+        <li class="ev">
+          <span class="dot"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg></span>
+          <p class="when"><b>Mangsir 11, 2083</b> · Friday, 27 Nov</p>
+          <h3>Wedding ceremony</h3>
+          <p>The sacred rituals of Bibaha, as the janti arrives at the venue.</p>
+          <p class="place">Quick 20 Party Palace, Dhapakhel</p>
+          <div class="btns">
+            <a class="btn" href="https://share.google/mCOfTQz7ICEHsqeut" target="_blank" rel="noopener">View on map ↗</a>
+            <a class="btn ghost" id="cal1" target="_blank" rel="noopener">Add to calendar</a>
+          </div>
+        </li>
+        <li class="ev">
+          <span class="dot"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 3v5a4 4 0 0 0 8 0V3M12 12v8M8 21h8"/></svg></span>
+          <p class="when"><b>Mangsir 13, 2083</b> · Sunday, 29 Nov</p>
+          <h3>Reception</h3>
+          <p>An evening of dinner, music and warm wishes for the newlyweds.</p>
+          <p class="place">Modern Party Venue, Thankot</p>
+          <div class="btns">
+            <a class="btn" href="https://share.google/OFV9DAsFFocRhTz2e" target="_blank" rel="noopener">View on map ↗</a>
+            <a class="btn ghost" id="cal2" target="_blank" rel="noopener">Add to calendar</a>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band alt closing" id="closing">
+    <div class="wrap fade">
+      <div class="paisley" aria-hidden="true">
+        <svg preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <pattern id="paiP" width="88" height="46" patternUnits="userSpaceOnUse" x="50%">
+              <g fill="none" stroke="currentColor" stroke-width="1.2">
+                <path d="M22 38 C8 38 6 22 14 14 C20 8 30 8 32 16 C34 22 28 25 25 21 C23 18 26 15 28 17"/>
+                <path d="M21 33 C13 33 12 23 17 18 C21 14 26 15 27 19"/>
+                <path d="M66 8 C80 8 82 24 74 32 C68 38 58 38 56 30 C54 24 60 21 63 25 C65 28 62 31 60 29"/>
+                <path d="M67 13 C75 13 76 23 71 28 C67 32 62 31 61 27"/>
+                <path d="M0 23 H4 M40 23 H48 M84 23 H88"/>
+              </g>
+              <g fill="#f1b6c4"><circle cx="44" cy="23" r="2.2"/><circle cx="19" cy="27" r="1.6"/><circle cx="69" cy="19" r="1.6"/></g>
+              <g fill="currentColor"><circle cx="44" cy="14" r="1.1"/><circle cx="44" cy="32" r="1.1"/><circle cx="2" cy="14" r="1"/><circle cx="2" cy="32" r="1"/></g>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#paiP)"/>
+        </svg>
+      </div>
+      <svg class="lotus-div"><use href="#lotus"/></svg>
+      <p class="eyebrow">With joyful hearts</p>
+      <h2>Your presence is our greatest blessing</h2>
+      <p class="lead">Thank you for being part of this new chapter. We can't wait to celebrate with you, dance with you and make memories that last a lifetime.</p>
+      <p class="names">Aashaya <span>&amp;</span> Srisha</p>
+      <p class="dt dev">मंसिर ११, २०८३</p>
+      <div class="btns" style="justify-content:center;margin-top:26px">
+        <button class="btn" id="replayBtn" style="background:none;cursor:pointer">Watch the boat again ↑</button>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="foot">With love, from the B.C and Poudel families</footer>
+
+<script>
+{
+/* ================= helpers ================= */
+const clamp=(v,a,b)=>v<a?a:v>b?b:v, lerp=(a,b,t)=>a+(b-a)*t;
+const smooth=t=>{t=clamp(t,0,1);return t*t*(3-2*t)};
+const easeIO=t=>{t=clamp(t,0,1);return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};
+const rand=(a,b)=>a+Math.random()*(b-a);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mk=(w,h)=>{const c=document.createElement('canvas');c.width=Math.ceil(w);c.height=Math.ceil(h);return c};
+
+/* ================= sprites ================= */
+const PS=320,PR=124;
+function padSprite(hue,light,notch){
+  const c=mk(PS,PS),g=c.getContext('2d');g.translate(PS/2,PS/2);
+  const a0=notch+.16,a1=notch-.16+Math.PI*2;
+  const shape=()=>{g.beginPath();g.moveTo(0,0);g.arc(0,0,PR,a0,a1);g.closePath()};
+  g.save();g.shadowColor='rgba(0,18,16,.6)';g.shadowBlur=26;g.shadowOffsetX=10;g.shadowOffsetY=16;
+  const gr=g.createRadialGradient(-20,-24,10,0,0,PR);
+  gr.addColorStop(0,`hsl(${hue},48%,${light+14}%)`);gr.addColorStop(.7,`hsl(${hue},52%,${light}%)`);gr.addColorStop(1,`hsl(${hue+4},55%,${light-9}%)`);
+  g.fillStyle=gr;shape();g.fill();g.restore();
+  g.save();shape();g.clip();
+  g.strokeStyle=`hsla(${hue+10},50%,${light-16}%,.35)`;g.lineWidth=2.2;
+  for(let i=0;i<14;i++){const a=a0+(a1-a0)*(i+.5)/14;g.beginPath();g.moveTo(0,0);g.quadraticCurveTo(Math.cos(a+.08)*PR*.5,Math.sin(a+.08)*PR*.5,Math.cos(a)*PR,Math.sin(a)*PR);g.stroke()}
+  const hl=g.createRadialGradient(-45,-50,0,-45,-50,PR*1.1);hl.addColorStop(0,'rgba(255,255,230,.22)');hl.addColorStop(1,'rgba(255,255,230,0)');g.fillStyle=hl;g.fillRect(-PR,-PR,PR*2,PR*2);
+  g.restore();
+  g.strokeStyle=`hsla(${hue},45%,${light+20}%,.55)`;g.lineWidth=3;g.beginPath();g.arc(0,0,PR-3,a0+.03,a1-.03);g.stroke();
+  g.strokeStyle=`hsla(${hue},60%,${light-20}%,.6)`;g.lineWidth=2;shape();g.stroke();
+  return c;
+}
+const FS=256,FR=110;
+function petal(g,len,wid,c1,c2){
+  const gr=g.createLinearGradient(0,0,0,-len);gr.addColorStop(0,c1);gr.addColorStop(.55,c1);gr.addColorStop(1,c2);
+  g.fillStyle=gr;g.beginPath();g.moveTo(0,0);
+  g.bezierCurveTo(wid,-len*.25,wid*.75,-len*.75,0,-len);g.bezierCurveTo(-wid*.75,-len*.75,-wid,-len*.25,0,0);g.fill();
+  g.strokeStyle='rgba(200,110,140,.35)';g.lineWidth=1.2;g.stroke();
+}
+function lotusSprite(open){
+  const c=mk(FS,FS),g=c.getContext('2d');g.translate(FS/2,FS/2);
+  g.save();g.shadowColor='rgba(0,18,16,.55)';g.shadowBlur=18;g.shadowOffsetX=6;g.shadowOffsetY=10;
+  const rings=open?[[10,FR,34,0],[9,FR*.78,30,.3],[7,FR*.55,24,.1]]:[[6,FR*.75,26,0],[5,FR*.6,22,.5]];
+  rings.forEach(([n,len,w,off],ri)=>{
+    for(let i=0;i<n;i++){g.save();g.rotate(off+i*Math.PI*2/n+rand(-.06,.06));
+      petal(g,len*rand(.92,1.04),w,ri?'#fff8f6':'#fdeff1',ri===2?'#f7c2cf':'#ef9fb5');g.restore()}
+    if(ri===0){g.shadowColor='transparent'}
+  });
+  g.restore();
+  if(open){
+    const cg=g.createRadialGradient(0,0,0,0,0,17);cg.addColorStop(0,'#ffd86b');cg.addColorStop(1,'#e59a2c');
+    g.fillStyle=cg;g.beginPath();g.arc(0,0,16,0,7);g.fill();
+    g.fillStyle='#b5671c';for(let i=0;i<9;i++){const a=i*.7,r=i<1?0:9;g.beginPath();g.arc(Math.cos(a)*r,Math.sin(a)*r,2,0,7);g.fill()}
+    g.strokeStyle='#f7d77c';g.lineWidth=1.5;for(let i=0;i<22;i++){const a=i/22*Math.PI*2;g.beginPath();g.moveTo(Math.cos(a)*17,Math.sin(a)*17);g.lineTo(Math.cos(a)*25,Math.sin(a)*25);g.stroke()}
+  }
+  return c;
+}
+function glowSprite(){
+  const c=mk(64,64),g=c.getContext('2d'),gr=g.createRadialGradient(32,32,0,32,32,32);
+  gr.addColorStop(0,'rgba(255,255,245,1)');gr.addColorStop(.18,'rgba(255,236,190,.85)');gr.addColorStop(.45,'rgba(240,200,140,.25)');gr.addColorStop(1,'rgba(240,200,140,0)');
+  g.fillStyle=gr;g.fillRect(0,0,64,64);return c;
+}
+function causticTile(){
+  const S=256,c=mk(S,S),g=c.getContext('2d'),img=g.createImageData(S,S),d=img.data,pts=[];
+  for(let i=0;i<16;i++)pts.push([Math.random()*S,Math.random()*S]);
+  for(let y=0;y<S;y++)for(let x=0;x<S;x++){
+    let f1=1e9,f2=1e9;
+    for(const [px,py] of pts)for(let ox=-S;ox<=S;ox+=S)for(let oy=-S;oy<=S;oy+=S){
+      const dx=x-px-ox,dy=y-py-oy,dd=dx*dx+dy*dy;if(dd<f1){f2=f1;f1=dd}else if(dd<f2)f2=dd}
+    const v=Math.sqrt(f2)-Math.sqrt(f1),b=Math.pow(Math.max(0,1-v/16),3);
+    const i=(y*S+x)*4;d[i]=215;d[i+1]=250;d[i+2]=240;d[i+3]=b*255;
+  }
+  g.putImageData(img,0,0);return c;
+}
+const PADS=[[100,30],[96,26],[104,33],[92,28],[108,24],[98,36]].map(([h,l])=>padSprite(h,l,rand(0,7)));
+const FLOWERS=[lotusSprite(1),lotusSprite(1),lotusSprite(0)];
+const GLOW=glowSprite(), CAUS=causticTile();
+
+/* ================= boat sprite ================= */
+function boatSprite(bw,dpr){
+  const u=bw,hw=u/2*1.17,hl=u*1.15,W=u*3.3,H=hl*2+u*.8,c=mk(W*dpr,H*dpr),g=c.getContext('2d');
+  g.scale(dpr,dpr);g.translate(W/2,H/2);
+  const C=(x,y,r,f)=>{g.fillStyle=f;g.beginPath();g.arc(x,y,r,0,7);g.fill()};
+  const E=(x,y,rx,ry,rot,f)=>{g.fillStyle=f;g.beginPath();g.ellipse(x,y,rx,ry,rot,0,7);g.fill()};
+  const qp=(x0,y0,cx,cy,x1,y1,t)=>[(1-t)*(1-t)*x0+2*(1-t)*t*cx+t*t*x1,(1-t)*(1-t)*y0+2*(1-t)*t*cy+t*t*y1];
+  const beads=(x0,y0,cx,cy,x1,y1,n,r,cols)=>{for(let i=0;i<=n;i++){const [x,y]=qp(x0,y0,cx,cy,x1,y1,i/n);C(x,y,r,cols[i%cols.length]);C(x-r*.3,y-r*.3,r*.35,'rgba(255,255,255,.25)')}};
+  const hull=s=>{g.beginPath();g.moveTo(-hw*.8*s,-hl*s);g.quadraticCurveTo(-hw*1.04*s,-hl*.25*s,-hw*.96*s,hl*.22*s);g.quadraticCurveTo(-hw*.78*s,hl*.82*s,0,hl*s);
+    g.quadraticCurveTo(hw*.78*s,hl*.82*s,hw*.96*s,hl*.22*s);g.quadraticCurveTo(hw*1.04*s,-hl*.25*s,hw*.8*s,-hl*s);g.quadraticCurveTo(0,-hl*1.06*s,-hw*.8*s,-hl*s);g.closePath()};
+  g.save();g.shadowColor='rgba(0,15,14,.6)';g.shadowBlur=u*.25;g.shadowOffsetX=u*.08;g.shadowOffsetY=u*.14;
+  const hg=g.createLinearGradient(-hw,0,hw,0);hg.addColorStop(0,'#d9781f');hg.addColorStop(.5,'#f4ac3c');hg.addColorStop(1,'#c96a1a');
+  g.fillStyle=hg;hull(1);g.fill();g.restore();
+  g.lineWidth=u*.05;g.strokeStyle='#f8d98a';hull(.95);g.stroke();
+  g.lineWidth=u*.012;g.strokeStyle='rgba(120,60,10,.5)';hull(.99);g.stroke();
+  const ig=g.createLinearGradient(-hw,0,hw,0);ig.addColorStop(0,'#5c3018');ig.addColorStop(.5,'#8a4b25');ig.addColorStop(1,'#5c3018');
+  g.fillStyle=ig;hull(.84);g.fill();
+  g.save();hull(.84);g.clip();g.strokeStyle='rgba(40,18,8,.45)';g.lineWidth=1;
+  for(let i=-3;i<=3;i++){g.beginPath();g.moveTo(i*hw*.22,-hl);g.lineTo(i*hw*.18,hl);g.stroke()}
+  /* seat plank the couple sit on: top face, front edge and its shadow on the floor */
+  const sy=-hl*.4,sd=u*.3;
+  g.fillStyle='rgba(25,10,3,.5)';g.fillRect(-hw,sy+sd*.5,hw*2,u*.07);
+  const sg2=g.createLinearGradient(0,sy-sd/2,0,sy+sd/2);sg2.addColorStop(0,'#b8662a');sg2.addColorStop(1,'#d4823a');
+  g.fillStyle=sg2;g.fillRect(-hw,sy-sd/2,hw*2,sd);
+  g.strokeStyle='rgba(90,40,12,.45)';g.lineWidth=1;for(let i=1;i<4;i++){g.beginPath();g.moveTo(-hw,sy-sd/2+i*sd/4);g.lineTo(hw,sy-sd/2+i*sd/4);g.stroke()}
+  g.fillStyle='#9c4f1f';g.fillRect(-hw,sy+sd/2-u*.035,hw*2,u*.035);
+  g.fillStyle='rgba(255,225,170,.35)';g.fillRect(-hw,sy-sd/2,hw*2,u*.015);
+  [-.8,.8].forEach(k=>{g.fillStyle='#3b1d0c';g.beginPath();g.arc(hw*k,sy,u*.012,0,7);g.fill()});
+  g.fillStyle='#b5622a';g.fillRect(-hw,hl*.52-u*.05,u,u*.1);g.fillStyle='rgba(255,220,160,.25)';g.fillRect(-hw,hl*.52-u*.05,u,u*.015);
+  const pr=[[.31,.12],[.38,-.4],[.42,.36],[.47,-.1],[.55,.25],[.6,-.3],[.64,.05],[.7,.3],[.72,-.18],[.78,.08],[.35,-.05],[.5,.42],[.58,-.48],[.66,.4],[.75,-.05],[.82,-.2],[.83,.18],[.44,-.32],[.62,.18],[.53,-.22]];
+  pr.forEach(([y,x],i)=>E(x*hw*1.4*(1-(y-.25)*.7),y*hl,u*.024,u*.014,i*1.3,['#e0344d','#f06b84','#c41d3a','#f7a0b2'][i%4]));
+  g.restore();
+  beads(-hw*.92,hl*.2,-hw*.74,hl*.78,0,hl*.95,13,u*.027,['#f59e0b','#ea580c','#fbbf24']);
+  beads(hw*.92,hl*.2,hw*.74,hl*.78,0,hl*.95,13,u*.027,['#f59e0b','#ea580c','#fbbf24']);
+  E(0,hl*.98,u*.03,u*.05,0,'#2f7d32');
+  const cc=mk(W*dpr,H*dpr);
+  return {c,cc,cg:cc.getContext('2d'),W,H,hw,hl,u,dpr};
+}
+/* the couple, drawn every frame so they can move */
+const CP=1.26;
+function coupleHands(u,t){ // positions (boat-local, before boat rotation) of the two trailing hands
+  const hw=u/2,hl=u*1.15,sy=-hl*.4,ty=-hl*.1,m=(x,y)=>[x*CP,sy+(y-ty)*CP];
+  return [m(-hw*1.3+Math.sin(t*1.3)*hw*.07,ty+hl*.09+Math.sin(t*1.3+1)*hl*.035),m(hw*1.25+Math.sin(t*1.1+2)*hw*.06,ty+hl*.07+Math.cos(t*1.1)*hl*.035)];
+}
+function drawCouple(B,t){
+  const g=B.cg,u=B.u,hw=u/2,hl=u*1.15,ty=-hl*.1,sy=-hl*.4;
+  g.setTransform(1,0,0,1,0,0);g.clearRect(0,0,B.cc.width,B.cc.height);
+  g.setTransform(B.dpr,0,0,B.dpr,B.W/2*B.dpr,B.H/2*B.dpr);
+  g.translate(0,sy);g.rotate(Math.sin(t*.9)*.025);g.scale(CP,CP);g.translate(0,-ty);
+  const C=(x,y,r,f)=>{g.fillStyle=f;g.beginPath();g.arc(x,y,r,0,7);g.fill()};
+  const E=(x,y,rx,ry,rot,f)=>{g.fillStyle=f;g.beginPath();g.ellipse(x,y,rx,ry,rot,0,7);g.fill()};
+  const qp=(x0,y0,cx,cy,x1,y1,k)=>[(1-k)*(1-k)*x0+2*(1-k)*k*cx+k*k*x1,(1-k)*(1-k)*y0+2*(1-k)*k*cy+k*k*y1];
+  const beads=(x0,y0,cx,cy,x1,y1,n,r,cols)=>{for(let i=0;i<=n;i++){const [x,y]=qp(x0,y0,cx,cy,x1,y1,i/n);C(x,y,r,cols[i%cols.length]);C(x-r*.3,y-r*.3,r*.35,'rgba(255,255,255,.25)')}};
+  const stroke=(col,w,f)=>{g.strokeStyle=col;g.lineWidth=w;g.lineCap='round';g.lineJoin='round';g.beginPath();f();g.stroke()};
+  const skin='#c88a60',skinD='#9e6440',hair='#150e0a',gold='#f1c75b',red='#b8132b';
+  const gx=-hw*.25,bx=hw*.27,br=1+Math.sin(t*1.9)*.025,lean=Math.sin(t*.7),sw=Math.sin(t*1.9)*hw*.03;
+  const [hg,hb]=coupleHands(u,t).map(([x,y])=>[x/CP,(y-sy)/CP+ty]);
+  /* groom: seated, thighs over the plank edge, knees, shoes on the floor */
+  const fz=Math.sin(t*1.4)*hw*.02;
+  E(gx,ty+hl*.4,hw*.3,hw*.13,0,'rgba(20,8,2,.38)');
+  E(gx-hw*.125,ty+hl*.38+fz,hw*.085,hw*.11,0,'#2a1a12');E(gx+hw*.115,ty+hl*.38-fz,hw*.085,hw*.11,0,'#2a1a12');
+  g.fillStyle='#efe6d2';rr(g,gx-hw*.22,ty+hl*.0,hw*.19,hl*.33,hw*.09);g.fill();rr(g,gx+hw*.02,ty+hl*.0,hw*.19,hl*.33,hw*.09);g.fill();
+  stroke('rgba(120,95,60,.3)',1,()=>{g.moveTo(gx-hw*.125,ty+hl*.1);g.lineTo(gx-hw*.125,ty+hl*.27);g.moveTo(gx+hw*.115,ty+hl*.1);g.lineTo(gx+hw*.115,ty+hl*.27)});
+  E(gx-hw*.125,ty+hl*.3,hw*.08,hw*.06,0,'#fbf6ea');E(gx+hw*.115,ty+hl*.3,hw*.08,hw*.06,0,'#fbf6ea');
+  /* bride: seated, saree falling over her knees to the floor */
+  E(bx+hw*.04,ty+hl*.44,hw*.38,hw*.13,0,'rgba(20,8,2,.38)');
+  [[bx-hw*.06,-fz],[bx+hw*.13,fz]].forEach(([x,d])=>{E(x,ty+hl*.47+d,hw*.06,hw*.05,0,skin);g.strokeStyle='#d0202f';g.lineWidth=u*.01;g.beginPath();g.ellipse(x,ty+hl*.47+d,hw*.06,hw*.05,0,0,7);g.stroke();C(x,ty+hl*.5+d,u*.008,'#f1c75b')});
+  const dr=g.createLinearGradient(0,ty,0,ty+hl*.48);dr.addColorStop(0,'#a3112a');dr.addColorStop(1,'#d62a40');
+  g.fillStyle=dr;g.beginPath();g.moveTo(bx-hw*.28,ty);g.quadraticCurveTo(bx-hw*.42,ty+hl*.26,bx-hw*.24,ty+hl*.44);
+  g.quadraticCurveTo(bx+hw*.05,ty+hl*.49,bx+hw*.34,ty+hl*.42);g.quadraticCurveTo(bx+hw*.45,ty+hl*.2,bx+hw*.3,ty);g.closePath();g.fill();
+  E(bx-hw*.08,ty+hl*.28,hw*.1,hw*.07,0,'rgba(255,120,140,.25)');E(bx+hw*.14,ty+hl*.28,hw*.1,hw*.07,0,'rgba(255,120,140,.25)');
+  for(let i=0;i<7;i++){const k=i/6;stroke('rgba(255,200,120,.28)',1,()=>{g.moveTo(bx,ty+hl*.12);g.lineTo(lerp(bx-hw*.26,bx+hw*.32,k),ty+hl*(.44+Math.sin(k*3.14)*.03))})}
+  stroke(gold,u*.034,()=>{g.moveTo(bx-hw*.26,ty+hl*.44);g.quadraticCurveTo(bx+hw*.05,ty+hl*.49,bx+hw*.33,ty+hl*.42)});
+  for(let i=0;i<9;i++){const [x,y]=qp(bx-hw*.26,ty+hl*.44,bx+hw*.05,ty+hl*.49,bx+hw*.33,ty+hl*.42,i/8);C(x,y,u*.007,'#7a0f1e')}
+  /* groom: arm trailing in the water */
+  stroke('#2b3242',u*.095,()=>{g.moveTo(gx-hw*.28,ty-hw*.04);g.quadraticCurveTo(gx-hw*.78,ty-hw*.3,hg[0]+hw*.12,hg[1]-hl*.04)});
+  C(hg[0]+hw*.1,hg[1]-hl*.03,u*.05,'#efe6d2');E(hg[0],hg[1],u*.06,u*.045,.6+Math.sin(t*1.3)*.2,skin);
+  /* groom torso */
+  g.save();g.translate(gx,ty);g.scale(1,br);
+  E(0,0,hw*.37,hw*.23,-.1,'#e9dfc8');E(0,-hw*.02,hw*.34,hw*.205,-.1,'#2b3242');
+  g.fillStyle='#efe6d2';g.beginPath();g.moveTo(-hw*.09,hw*.06);g.lineTo(0,hw*.21);g.lineTo(hw*.09,hw*.06);g.closePath();g.fill();
+  C(-hw*.03,hw*.15,u*.008,gold);
+  stroke('rgba(255,255,255,.15)',u*.012,()=>{g.ellipse(0,-hw*.02,hw*.3,hw*.17,-.1,Math.PI*1.05,Math.PI*1.6)});
+  g.restore();
+  beads(gx-hw*.28,ty-hw*.02,gx-hw*.02+sw,ty+hl*.5,gx+hw*.26,ty-hw*.06,20,u*.024,['#f59e0b','#ea580c','#fbbf24','#dc2626']);
+  /* bride torso */
+  g.save();g.translate(bx,ty);g.scale(1,br);E(0,0,hw*.34,hw*.21,.12,red);
+  stroke(gold,u*.03,()=>{g.moveTo(-hw*.28,hw*.13);g.quadraticCurveTo(0,-hw*.02,hw*.2,-hw*.18)});
+  for(let i=0;i<6;i++){const [x,y]=qp(-hw*.28,hw*.13,0,-hw*.02,hw*.2,-hw*.18,i/5);C(x,y,u*.008,'#7a0f1e')}
+  g.restore();
+  beads(bx-hw*.2,ty-hw*.03,bx+hw*.02-sw,ty+hl*.36,bx+hw*.2,ty-hw*.03,18,u*.014,['#1e9e5a','#157a45']);
+  g.fillStyle=gold;rr(g,bx-u*.025-sw*.5,ty+hl*.155,u*.05,u*.07,u*.012);g.fill();C(bx-sw*.5,ty+hl*.24,u*.016,'#e11d48');
+  beads(bx-hw*.3,ty+hw*.02,bx+hw*.02-sw,ty+hl*.46,bx+hw*.29,ty+hw*.02,20,u*.022,['#ea580c','#f59e0b','#be123c']);
+  /* bride: arm out, chura bangles, mehndi hand */
+  const wr=[hb[0]-hw*.14,hb[1]-hl*.04],el=[hb[0]-hw*.34,hb[1]-hl*.1];
+  stroke(red,u*.09,()=>{g.moveTo(bx+hw*.3,ty-hw*.02);g.quadraticCurveTo(bx+hw*.72,ty-hw*.26,el[0],el[1])});
+  stroke(skin,u*.07,()=>{g.moveTo(el[0],el[1]);g.lineTo(wr[0],wr[1])});
+  for(let i=0;i<5;i++){const k=.15+i*.17;C(lerp(el[0],wr[0],k),lerp(el[1],wr[1],k),u*.03,['#c8102e','#f1c75b','#c8102e','#0f8a4a','#f1c75b'][i])}
+  E(hb[0],hb[1],u*.06,u*.045,-.5+Math.sin(t*1.1)*.2,skin);
+  [[-.02,0],[.01,.012],[.02,-.01],[-.01,-.015],[0,.02],[.025,.01]].forEach(([dx,dy])=>C(hb[0]+dx*u,hb[1]+dy*u,u*.006,'#7a3a17'));
+  /* groom's arm around her shoulders */
+  const pat=Math.sin(t*.7)*hw*.04;
+  stroke('#2b3242',u*.085,()=>{g.moveTo(gx+hw*.2,ty-hw*.14);g.quadraticCurveTo(bx-hw*.02,ty-hw*.46,bx+hw*.3+pat,ty-hw*.12)});
+  E(bx+hw*.33+pat,ty-hw*.08,u*.05,u*.04,.4,skin);
+  /* heads */
+  const head=(x,y,r,tilt,draw)=>{g.save();g.translate(x,y);g.rotate(tilt);draw(r);g.restore()};
+  head(gx+hw*.05+lean*hw*.03,ty-hw*.13,u*.12,.22+lean*.07,r=>{
+    E(-r*.95,r*.05,r*.18,r*.24,0,skinD);E(r*.95,r*.05,r*.18,r*.24,0,skinD);C(0,0,r,skin);
+    g.save();g.beginPath();g.arc(0,0,r,0,7);g.clip();C(0,-r*.34,r*1.02,hair);E(0,r*.92,r*.2,r*.16,0,skinD);g.restore();
+    E(0,r*.62,r*.07,r*.12,0,'#d4142c');
+    g.save();g.beginPath();g.ellipse(0,-r*.3,r*.9,r*.7,0,0,7);g.clip();g.fillStyle='#8f1a2b';g.fillRect(-r,-r*1.1,r*2,r*1.6);
+    const cols=['#111','#f3e7c9','#e07a1f','#1d4e89'];
+    for(let yy=-r;yy<r*.5;yy+=r*.26)for(let xx=-r;xx<r;xx+=r*.26){const k=((xx/r*4|0)+(yy/r*4|0))&3;
+      g.strokeStyle=cols[k];g.lineWidth=r*.06;g.beginPath();g.moveTo(xx,yy+r*.1);g.lineTo(xx+r*.1,yy);g.lineTo(xx+r*.2,yy+r*.1);g.lineTo(xx+r*.1,yy+r*.2);g.closePath();g.stroke()}
+    g.restore();stroke('#3a0a12',r*.1,()=>{g.ellipse(0,-r*.3,r*.9,r*.7,0,Math.PI*.15,Math.PI*.85)});
+  });
+  const fl=Math.sin(t*2.6),fl2=Math.sin(t*2.1+1);
+  head(bx-hw*.07-lean*hw*.04,ty-hw*.14,u*.11,-.24-lean*.09,r=>{
+    C(0,-r*1.08,r*.46,hair);
+    for(let i=0;i<14;i++){const a=i/14*Math.PI*2;C(Math.cos(a)*r*.5,-r*1.08+Math.sin(a)*r*.5,r*.11,'#fffaf0')}
+    C(-r*.95,r*.12,r*.17,skinD);C(r*.95,r*.12,r*.17,skinD);C(0,0,r,skin);
+    g.save();g.beginPath();g.arc(0,0,r,0,7);g.clip();C(0,-r*.3,r*1.02,hair);E(0,r*.92,r*.2,r*.15,0,skinD);g.restore();
+    stroke('#e0182f',r*.13,()=>{g.moveTo(0,-r*.85);g.lineTo(0,r*.6)});
+    C(0,r*.66,r*.12,gold);C(0,r*.66,r*.05,'#e11d48');
+    const ear=Math.sin(t*2.2)*r*.06;C(-r*1.08,r*.3+ear,r*.13,gold);C(r*1.08,r*.3-ear,r*.13,gold);
+    stroke(gold,r*.06,()=>{g.arc(r*.22,r*.9,r*.16,-.4,2.4)});
+    const L=[-r*1.7+fl*r*.18,r*1.6+fl2*r*.15],Rr=[r*1.7+fl2*r*.18,r*1.6+fl*r*.15];
+    const veil=()=>{g.moveTo(L[0],L[1]);g.quadraticCurveTo(-r*1.9,r*.4,-r*1.05,-r*.35);g.quadraticCurveTo(0,-r*2.1,r*1.05,-r*.35);g.quadraticCurveTo(r*1.9,r*.4,Rr[0],Rr[1])};
+    g.save();g.globalAlpha=.55;g.fillStyle='#d81f3a';g.beginPath();veil();g.lineTo(r*1.05,r*.7);
+    g.quadraticCurveTo(r*.8,-r*.3,0,-r*.65);g.quadraticCurveTo(-r*.8,-r*.3,-r*1.05,r*.7);g.closePath();g.fill();g.restore();
+    g.setLineDash([r*.08,r*.12]);stroke(gold,r*.09,veil);g.setLineDash([]);
+  });
+}
+function rr(g,x,y,w,h,r){g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath()}
+
+/* ================= pond scene ================= */
+const html=document.documentElement,hero=document.querySelector('.hero'),cv=document.getElementById('pond'),ctx=cv.getContext('2d');
+const rvs=[...document.querySelectorAll('.rv')],gate=document.getElementById('gate'),skipBtn=document.getElementById('skipBtn'),cue=document.getElementById('cue');
+let W=0,H=0,DPR=1,U=1,pads=[],bg=null,vig=null,boat=null,causPat=null,cw=0;
+let state='idle',t0=0,T=0,last=0,particles=[],ripples=[],trail=[],emitters=[],heroVisible=true,lastW=0,lastH=0;
+const ZOOM0=1.75,ZOOM_DUR=3.6,BOAT_START=2.6,BOAT_DUR=9.6;
+
+function layout(){
+  DPR=Math.min(2,window.devicePixelRatio||1);W=cv.clientWidth;H=cv.clientHeight;
+  cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
+  U=Math.min(W,H*.72);
+  // background water + vignette (pre-rendered)
+  bg=mk(cv.width,cv.height);let g=bg.getContext('2d');
+  const gr=g.createRadialGradient(bg.width/2,bg.height*.48,0,bg.width/2,bg.height/2,Math.max(bg.width,bg.height)*.75);
+  gr.addColorStop(0,'#256d68');gr.addColorStop(.55,'#175451');gr.addColorStop(1,'#0b3332');g.fillStyle=gr;g.fillRect(0,0,bg.width,bg.height);
+  vig=mk(cv.width,cv.height);g=vig.getContext('2d');
+  const vg=g.createRadialGradient(vig.width/2,vig.height/2,Math.min(vig.width,vig.height)*.3,vig.width/2,vig.height/2,Math.max(vig.width,vig.height)*.72);
+  vg.addColorStop(0,'rgba(4,22,21,0)');vg.addColorStop(1,'rgba(4,22,21,.7)');g.fillStyle=vg;g.fillRect(0,0,vig.width,vig.height);
+  causPat=ctx.createPattern(CAUS,'repeat');
+  // pads
+  const tw=document.getElementById('heroText').offsetWidth;
+  cw=Math.min(W*.5-U*.13,U*.42,tw/2);
+  const cell=U*.15;pads=[];
+  for(let y=-cell;y<H+cell;y+=cell*.92)for(let x=-cell+((y/cell|0)%2)*cell*.5;x<W+cell;x+=cell){
+    const p=mkPad(x+rand(-.3,.3)*cell,y+rand(-.3,.3)*cell,U*rand(.052,.082));pads.push(p);
+    if(Math.random()<.45)pads.push(mkPad(p.x+rand(-1,1)*cell*.5,p.y+rand(-1,1)*cell*.5,U*rand(.03,.045)));
+  }
+  pads.sort((a,b)=>b.r-a.r);
+  const bw=clamp(U*.26,78,146);boat=boatSprite(bw,DPR);boat.bw=bw;
+  lastW=W;lastH=H;
+}
+function mkPad(x,y,r){
+  const cx=W/2,dx=x-cx,side=dx===0?(Math.random()<.5?-1:1):Math.sign(dx);
+  const inCh=Math.abs(dx)<cw+r*.4;
+  const p={x,y,r,rot:rand(0,7),spr:PADS[Math.random()*PADS.length|0],ph:x*.011+y*.008+rand(0,1.4),side,
+    tx:inCh?cx+side*(cw+r*rand(.35,1.1)):x,ty:y+(inCh?rand(-.3,.3)*r:0),flower:null};
+  if(r>U*.045&&Math.random()<.4)p.flower={spr:FLOWERS[Math.random()<.78?(Math.random()*2|0):2],dx:rand(-.25,.25)*r,dy:rand(-.25,.25)*r,s:rand(.62,.82)*r,rot:rand(0,7)};
+  return p;
+}
+
+function boatPos(t){ // world position at time t (seconds after start)
+  const p=clamp((t-BOAT_START)/BOAT_DUR,0,1),bl=boat.hl*2;
+  return {p,y:lerp(-bl*.75,H+bl*.9,p),x:W/2+Math.sin(t*.55)*U*.035};
+}
+function zoomAt(t){return state==='idle'?ZOOM0+Math.sin(t*.4)*.02:lerp(ZOOM0,1,easeIO(t/ZOOM_DUR))}
+
+function spark(x,y,vx,vy,life,s){particles.push({x,y,vx,vy,life,max:life,s})}
+
+function frame(now){
+  requestAnimationFrame(frame);
+  if(!heroVisible||document.hidden){last=now;return}
+  const dt=Math.min(.05,(now-(last||now))/1000);last=now;
+  if(cv.clientWidth!==lastW||Math.abs(cv.clientHeight-lastH)>80)layout();
+  const tt=state==='idle'?now/1000:(now-t0)/1000;T=tt;
+  const z=state==='done'?1:zoomAt(tt);
+  const b=state==='play'?boatPos(tt):null;
+  const sternY=b?b.y-boat.hl:(state==='done'?1e9:-1e9);
+  const openFront=b?b.y+boat.hl+H*.32:(state==='done'?1e9:-1e9);
+
+  ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(bg,0,0);
+  ctx.setTransform(DPR*z,0,0,DPR*z,DPR*W/2*(1-z),DPR*H/2*(1-z));
+  // caustics
+  ctx.save();ctx.globalCompositeOperation='screen';
+  [[.08,1.6,18,10],[.06,2.3,-14,22]].forEach(([a,s,vx,vy])=>{
+    ctx.save();ctx.globalAlpha=a;ctx.scale(s,s);const ox=((now/1000*vx)%256),oy=((now/1000*vy)%256);ctx.translate(ox,oy);ctx.fillStyle=causPat;ctx.fillRect(-512,-512,W/s+1024,H/s+1024);ctx.restore()});
+  ctx.restore();
+
+  // wake trail
+  if(b&&b.p<1){trail.push({x:b.x,y:b.y-boat.hl*.95,t:tt});
+    if(Math.random()<.5)spark(...toScreen(b.x+rand(-.5,.5)*boat.hw,b.y-boat.hl,z),rand(-12,12),rand(-30,-5),rand(1,2.2),rand(.25,.6));
+  }
+  while(trail.length&&tt-trail[0].t>2.8)trail.shift();
+  ctx.lineCap='round';
+  for(let i=1;i<trail.length;i++){
+    const p=trail[i],q=trail[i-1],a=tt-p.t,al=.32*(1-a/2.8),sp=boat.hw*.7+a*U*.06,sq=boat.hw*.7+(tt-q.t)*U*.06;
+    ctx.strokeStyle=`rgba(225,248,242,${al})`;ctx.lineWidth=1.6;
+    ctx.beginPath();ctx.moveTo(q.x-sq,q.y);ctx.lineTo(p.x-sp,p.y);ctx.moveTo(q.x+sq,q.y);ctx.lineTo(p.x+sp,p.y);ctx.stroke();
+    ctx.strokeStyle=`rgba(225,248,242,${al*.12})`;ctx.lineWidth=boat.hw*.7*(1-a/3);ctx.beginPath();ctx.moveTo(q.x,q.y);ctx.lineTo(p.x,p.y);ctx.stroke();
+  }
+  // hand ripples
+  if(b&&b.p>0&&b.p<1&&(tt*10|0)%3===0&&Math.random()<.35){
+    coupleHands(boat.u,tt).forEach(([x,y])=>ripples.push({x:b.x+x,y:b.y+y,r:2,t:tt}));
+  }
+  ripples=ripples.filter(r=>tt-r.t<1.8);
+  ripples.forEach(r=>{const a=(tt-r.t)/1.8;ctx.strokeStyle=`rgba(230,250,245,${.4*(1-a)})`;ctx.lineWidth=1.2;ctx.beginPath();ctx.ellipse(r.x,r.y-a*U*.06,4+a*boat.bw*.45,(4+a*boat.bw*.45)*.8,0,0,7);ctx.stroke()});
+
+  // pads
+  const drawP=[];
+  const tn=now/1000;
+  for(const p of pads){
+    const o=smooth((openFront-p.y)/(H*.28));
+    const x=lerp(p.x,p.tx,o)+Math.sin(tn*.32+p.ph)*p.r*.14+Math.sin(tn*.19+p.ph*1.7)*p.r*.07;
+    const y=lerp(p.y,p.ty,o)+Math.cos(tn*.27+p.ph)*p.r*.11;
+    const sway=Math.sin(tn*.22+p.ph)*.16,rot=p.rot+o*.5*p.side+sway,s=p.r/PR*PS;
+    ctx.save();ctx.translate(x,y);ctx.rotate(rot);ctx.drawImage(p.spr,-s/2,-s/2,s,s);ctx.restore();
+    if(p.flower)drawP.push([p.flower,x,y,sway,p.ph]);
+  }
+  for(const [f,x,y,sway,ph] of drawP){
+    const cs=Math.cos(sway),sn=Math.sin(sway),fx=x+f.dx*cs-f.dy*sn,fy=y+f.dx*sn+f.dy*cs;
+    const s=f.s/FR*FS*(1+Math.sin(tn*.5+ph)*.035);
+    ctx.save();ctx.translate(fx+Math.sin(tn*.45+ph)*f.s*.05,fy);ctx.rotate(f.rot+sway*.6+Math.sin(tn*.38+ph*1.3)*.12);ctx.drawImage(f.spr,-s/2,-s/2,s,s);ctx.restore();
+  }
+
+  // boat
+  if(b&&b.p>0&&b.p<1){
+    const vx=Math.cos(tt*.55)*.55*U*.035,vy=(H+boat.hl*3.3)/BOAT_DUR,ang=-Math.atan2(vx,vy)+Math.sin(tt*1.7)*.015;
+    ctx.save();ctx.translate(b.x,b.y);ctx.rotate(ang);ctx.drawImage(boat.c,-boat.W/2,-boat.H/2,boat.W,boat.H);
+    drawCouple(boat,tt);ctx.shadowColor='rgba(28,10,2,.55)';ctx.shadowBlur=7*DPR;ctx.shadowOffsetX=2*DPR;ctx.shadowOffsetY=5*DPR;
+    ctx.drawImage(boat.cc,-boat.W/2,-boat.H/2,boat.W,boat.H);ctx.restore();
+  }
+  // reveal text as stern passes
+  if(state==='play'){
+    const sy=(sternY-H/2)*z+H/2;
+    for(const el of rvs)if(!el.classList.contains('on')&&sy>el._cy)revealEl(el);
+    if(b.p>=1)finish();
+  }
+  // vignette + sparkles (screen space)
+  ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(vig,0,0);
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  emitters=emitters.filter(e=>{e.t+=dt;const k=clamp(e.t/e.dur,0,1);
+    const x=lerp(e.x0,e.x1,k),y=e.y+Math.sin(k*Math.PI*3)*e.h*.35;
+    for(let i=0;i<3;i++)spark(x+rand(-6,6),y+rand(-e.h*.4,e.h*.4),rand(-15,15),rand(-25,5),rand(.6,1.4),rand(.3,.8));return k<1});
+  ctx.globalCompositeOperation='lighter';
+  particles=particles.filter(p=>(p.life-=dt)>0);
+  for(const p of particles){p.x+=p.vx*dt;p.y+=p.vy*dt;const a=p.life/p.max,s=24*p.s*(.5+a*.5);
+    ctx.globalAlpha=a*(.6+.4*Math.sin(now/60+p.x));ctx.drawImage(GLOW,p.x-s/2,p.y-s/2,s,s)}
+  ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';
+}
+function toScreen(x,y,z){return[(x-W/2)*z+W/2,(y-H/2)*z+H/2]}
+function measure(){const hr=hero.getBoundingClientRect();rvs.forEach(el=>{const r=el.getBoundingClientRect();el._cy=r.top-hr.top+r.height/2;el._x0=r.left-hr.left;el._w=r.width;el._h=r.height})}
+function revealEl(el){
+  el.classList.add('on');
+  // sparkle pen across the actual text width
+  const range=document.createRange();range.selectNodeContents(el);const rr=range.getBoundingClientRect(),hr=hero.getBoundingClientRect();
+  emitters.push({x0:rr.left-hr.left,x1:rr.right-hr.left,y:el._cy,h:el._h,t:0,dur:1.2});
+}
+
+/* ================= flow ================= */
+const audio=document.getElementById('bgm'),mBtn=document.getElementById('musicBtn');
+function setMusic(on){mBtn.classList.toggle('playing',on);mBtn.setAttribute('aria-label',on?'Pause music':'Play music')}
+function playMusic(){try{const p=audio.play();if(p&&p.then)p.then(()=>setMusic(true)).catch(()=>setMusic(false));else setMusic(true)}catch(e){setMusic(false)}}
+mBtn.addEventListener('click',()=>{if(audio.paused)playMusic();else{audio.pause();setMusic(false)}});
+
+function start(){
+  if(state==='play')return;
+  html.classList.add('lock');window.scrollTo(0,0);
+  gate.classList.add('off');mBtn.classList.add('show');cue.classList.remove('show');
+  rvs.forEach(el=>el.classList.remove('on'));trail=[];ripples=[];particles=[];emitters=[];
+  measure();
+  if(reduce){finish();return}
+  state='play';t0=performance.now();last=t0;skipBtn.classList.add('show');
+}
+function finish(){
+  state='done';rvs.forEach(el=>el.classList.add('on'));skipBtn.classList.remove('show');
+  html.classList.remove('lock');setTimeout(()=>cue.classList.add('show'),900);
+}
+document.getElementById('openBtn').addEventListener('click',()=>{playMusic();start()});
+skipBtn.addEventListener('click',finish);
+document.getElementById('replayBtn').addEventListener('click',()=>{html.style.scrollBehavior='auto';window.scrollTo(0,0);html.style.scrollBehavior='';start()});
+
+new IntersectionObserver(es=>{heroVisible=es[0].isIntersecting},{threshold:0}).observe(hero);
+addEventListener('resize',()=>{if(state!=='play')measure()});
+layout();measure();requestAnimationFrame(frame);
+document.fonts&&document.fonts.ready.then(()=>{layout();measure()});
+
+
+/* ================= mandala ================= */
+{
+  const m=document.getElementById('mandala'),ring=(n,r,len,w,shape)=>Array.from({length:n},(_,i)=>`<path transform="rotate(${i*360/n})" d="${shape(r,len,w)}"/>`).join('');
+  const petal=(r,l,w)=>`M0 ${-r} C${w} ${-r-l*.35} ${w*.6} ${-r-l*.8} 0 ${-r-l} C${-w*.6} ${-r-l*.8} ${-w} ${-r-l*.35} 0 ${-r}Z`;
+  const arch=(r,l,w)=>`M${-w} ${-r} Q0 ${-r-l*2} ${w} ${-r}`;
+  const dots=(n,r,s)=>Array.from({length:n},(_,i)=>{const a=i/n*Math.PI*2;return `<circle cx="${(Math.cos(a)*r).toFixed(1)}" cy="${(Math.sin(a)*r).toFixed(1)}" r="${s}"/>`}).join('');
+  m.innerHTML=`<g fill="none" stroke="currentColor" stroke-width="1.1">
+    <circle r="22"/><circle r="38"/>${ring(8,22,30,10,petal)}${ring(16,52,26,8,petal)}<circle r="80"/>${ring(24,80,20,11,arch)}
+    ${ring(32,104,34,7,petal)}<circle r="140"/><circle r="146" stroke-dasharray="2 5"/>${ring(40,146,18,10,arch)}${ring(20,166,26,9,petal)}<circle r="194"/></g>
+    <g fill="currentColor">${dots(24,64,2)}${dots(48,124,1.6)}${dots(60,186,1.4)}<circle r="6"/></g>`;
+}
+
+/* ================= scroll fades ================= */
+const fadeObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');fadeObs.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.fade').forEach(el=>fadeObs.observe(el));
+
+/* ================= scratch seal ================= */
+const sc=document.getElementById('scratchCv'),sg=sc.getContext('2d'),hint=document.getElementById('scratchHint');
+let scDone=false,moves=0,lastPt=null;
+function paintSeal(){
+  const r=sc.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);sc.width=r.width*d;sc.height=r.height*d;sg.setTransform(d,0,0,d,0,0);
+  const w=r.width,c=w/2,g=sg.createRadialGradient(c*.7,c*.6,0,c,c,c);
+  g.addColorStop(0,'#fbe6a8');g.addColorStop(.5,'#d6ab58');g.addColorStop(1,'#8e6526');
+  sg.globalCompositeOperation='source-over';sg.fillStyle=g;sg.beginPath();sg.arc(c,c,c,0,7);sg.fill();
+  for(let i=0;i<500;i++){sg.fillStyle=`rgba(${Math.random()<.5?'255,245,210':'110,75,25'},${rand(.05,.2)})`;sg.fillRect(rand(0,w),rand(0,w),1.5,1.5)}
+  sg.strokeStyle='rgba(95,62,20,.45)';sg.setLineDash([3,5]);sg.lineWidth=1.5;sg.beginPath();sg.arc(c,c,c-12,0,7);sg.stroke();sg.setLineDash([]);
+  sg.fillStyle='rgba(91,60,19,.9)';sg.textAlign='center';
+  sg.font=`${w*.26}px "Awesome Serif", Georgia, serif`;sg.fillText('A & S',c,c+w*.04);
+  sg.font=`500 ${w*.075}px "Agrave Pro", sans-serif`;sg.fillText('scratch here',c,c+w*.21);
+}
+function scratchAt(x,y){
+  sg.globalCompositeOperation='destination-out';sg.lineCap='round';sg.lineWidth=sc.clientWidth*.16;
+  sg.beginPath();sg.moveTo(lastPt?lastPt[0]:x,lastPt?lastPt[1]:y);sg.lineTo(x,y);sg.stroke();lastPt=[x,y];
+  if(++moves%10===0)check();
+}
+function check(){
+  const d=sg.getImageData(0,0,sc.width,sc.height).data;let clear=0,n=0;
+  for(let i=3;i<d.length;i+=4*24){n++;if(d[i]<100)clear++}
+  if(clear/n>.42)revealDate();
+}
+function revealDate(){if(scDone)return;scDone=true;sc.classList.add('gone');hint.textContent='See you there!'}
+const pt=e=>{const r=sc.getBoundingClientRect();return[e.clientX-r.left,e.clientY-r.top]};
+sc.addEventListener('pointerdown',e=>{if(scDone)return;sc.setPointerCapture(e.pointerId);lastPt=null;scratchAt(...pt(e))});
+sc.addEventListener('pointermove',e=>{if(scDone||!sc.hasPointerCapture(e.pointerId))return;scratchAt(...pt(e))});
+sc.addEventListener('pointerup',()=>{lastPt=null;if(!scDone)check()});
+paintSeal();if(document.fonts)Promise.all([document.fonts.load('40px "Awesome Serif"'),document.fonts.load('500 20px "Agrave Pro"')]).then(()=>{if(!scDone)paintSeal()}).catch(()=>{});
+
+/* ================= countdown ================= */
+const target=new Date('2026-11-27T08:00:00+05:45').getTime(),pad2=n=>String(n).padStart(2,'0');
+const el=id=>document.getElementById(id);
+function tick(){
+  let s=Math.floor((target-Date.now())/1000);
+  if(s<=0){el('count').hidden=true;const m=el('countMsg');m.hidden=false;
+    m.textContent=Date.now()<new Date('2026-11-30T00:00:00+05:45').getTime()?'The celebrations have begun. Come join the joy!':'Thank you for celebrating with us.';return}
+  el('cd-d').textContent=Math.floor(s/86400);s%=86400;el('cd-h').textContent=pad2(Math.floor(s/3600));s%=3600;el('cd-m').textContent=pad2(Math.floor(s/60));el('cd-s').textContent=pad2(s%60);
+  setTimeout(tick,1000-Date.now()%1000);
+}
+tick();
+
+/* ================= calendar links ================= */
+const cal=(text,d1,d2,loc,details)=>'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(text)+'&dates='+d1+'/'+d2+'&location='+encodeURIComponent(loc)+'&details='+encodeURIComponent(details);
+el('cal1').href=cal("Aashaya & Srisha's Wedding",'20261127','20261128','Quick 20 Party Palace, Dhapakhel','Mangsir 11, 2083. Janti Prasthan at 8:00 AM from Chandragiri Municipality.');
+el('cal2').href=cal("Aashaya & Srisha's Reception",'20261129','20261130','Modern Party Venue, Thankot','Mangsir 13, 2083. Wedding reception.');
+}
+</script>
+</body>
